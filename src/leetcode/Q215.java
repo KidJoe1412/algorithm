@@ -14,7 +14,7 @@ import java.util.Arrays;
  * 原题：
  * <a href="https://leetcode.cn/problems/kth-largest-element-in-an-array/description/"></a>
  */
-class Solution {
+class Q215 {
     public int findKthLargest(int[] nums, int k) {
         Arrays.sort(nums);
         return nums[nums.length - k];
