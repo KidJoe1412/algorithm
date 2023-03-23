@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 /**
  * 题干：
@@ -14,6 +15,7 @@ import java.util.Arrays;
  * 原题：
  * <a href="https://leetcode.cn/problems/kth-largest-element-in-an-array/description/"></a>
  */
+// 手写快排做法
 class Q215 {
     public int findKthLargest(int[] nums, int k) {
         Arrays.sort(nums);
@@ -33,8 +35,9 @@ class Q215 {
             if (i < j)
                 swap(nums,i,j);
         }
-        nums[left]=nums[i];
-        nums[i] = p;
+        // nums[left]=nums[i];
+        // nums[i] = p;
+        swap(nums,left,i);
         quickSort(nums,left,i-1);
         quickSort(nums,i+1,right);
     }
@@ -47,7 +50,19 @@ class Q215 {
 }
 
 
-
+// 小顶堆做法
+//class Q215 {
+//    public int findKthLargest(int[] nums, int k) {
+//        PriorityQueue<Integer> queue = new PriorityQueue<>();
+//        for(int x : nums){
+//            queue.add(x);
+//            while (queue.size() > k){
+//                queue.poll();
+//            }
+//        }
+//        return queue.peek();
+//    }
+//}
 
 
 
