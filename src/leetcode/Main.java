@@ -1,7 +1,7 @@
 package leetcode;
-import java.util.*;
+import org.junit.Test;
 
-public class Main{
+class Main {
     public static void main(String[] args) {
 
     }
