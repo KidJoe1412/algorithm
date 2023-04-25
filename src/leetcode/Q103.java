@@ -36,7 +36,7 @@ public class Q103 {
                 if (node.left != null) queue.add(node.left);
                 if (node.right != null) queue.add(node.right);
             }
-            ans.add(level.stream().toList());
+            // ans.add(level.stream().toList()); //jdk版本不够好像
             isLeft = ! isLeft;
         }
         return ans;
