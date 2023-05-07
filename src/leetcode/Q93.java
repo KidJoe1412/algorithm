@@ -1,6 +1,8 @@
 package leetcode;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 /**
@@ -16,18 +18,37 @@ import java.util.List;
  */
 class Q93 {
     List<String> ans = new ArrayList<>();
-
+    Deque<String> path = new ArrayDeque<>(4);
     public List<String> restoreIpAddresses(String s) {
         if (s.length() < 4 || s.length() > 12) return ans;
-        // dfs();
+        dfs(s,0,4,path,ans);
         return ans;
     }
+    // dfs四个参数分别为原字符串、开始索引、剩下多少段未分割、当前段字符串、最后结果
+    public void dfs(String s,int start,int flag,Deque<String> path,List<String> ans){
+        // 遍历完了
+        if (start == s.length()){
+            // 已经分割成四份了
+            if (flag == 0){
+                ans.add(String.join(".",path));
+            }
+            return;
+        }
 
-    public void dfs(String s,int start,int flag){
-        // 已经分割成四份了
-        if (flag == 3){
-            if (isValid(s.substring(start))){
-
+        for (int i = start; i < start + 3; i++) {
+            // 越界
+            if (i >= s.length()){
+                break;
+            }
+            // 后续部分太长了
+            if (s.length() - i > flag * 3){
+                continue;
+            }
+            if (isValid(s.substring(start,i + 1))){
+                String temp = s.substring(start,i + 1);
+                path.addLast(temp);
+                dfs(s,i + 1,flag - 1,path,ans);
+                path.removeLast();
             }
         }
     }
