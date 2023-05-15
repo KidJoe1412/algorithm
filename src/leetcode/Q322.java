@@ -13,7 +13,7 @@ import java.util.Arrays;
  * 原题：<a href="https://leetcode.cn/problems/coin-change/description/"></a>
  * ******************************************************
  */
-class Solution {
+class Q322 {
     int[] dp;
     public int coinChange(int[] coins, int amount) {
         // 数组大小为 amount + 1，初始值也为 amount + 1
